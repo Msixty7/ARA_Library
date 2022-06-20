@@ -2,6 +2,8 @@ This is a development build of the ARA Library 2.2.
 === PRELIMINARY - DO NOT USE FOR SHIPPING PRODUCTS! ===
 
 Changes since previous releases:
+- initial draft of generic ARA IPC library providing a proxy host and a proxy plug-in,
+  based on heavily refactored IPC Example from earlier SDK releases
 - initial draft of surround support for audio sources
 - initial draft of tracking whether an audio modification actually modifies the underlying audio source
 - implementation of assertion macros changed to be consistent void expressions
