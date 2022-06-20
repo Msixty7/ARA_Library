@@ -980,6 +980,7 @@ constexpr ARAIPCMessageID _encodeMessageID ()
 constexpr ARAIPCMessageID kGetFactoriesCountMessageID { 1 };
 constexpr ARAIPCMessageID kGetFactoryMessageID { 2 };
 constexpr ARAIPCMessageID kCreateDocumentControllerMessageID { 3 };
+constexpr ARAIPCMessageID kBindToDocumentControllerMessageID { 4 };
 
 
 // caller side: create a message with the specified arguments
