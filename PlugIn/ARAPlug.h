@@ -36,6 +36,7 @@
 #include <cstring>
 #include <atomic>
 #include <stdlib.h>     // workaround, see OptionalProperty::operator=
+#include <type_traits>
 
 
 namespace ARA
@@ -1870,11 +1871,15 @@ private:
 
         DocumentController* createDocumentController (const PlugInEntry* entry, const ARADocumentControllerHostInstance* instance) const noexcept override
         {
-            return new DocumentControllerClass (entry, instance);
+            if(std::is_abstract<FactoryConfigClass>::value)
+                return new DocumentControllerClass (entry, instance);
+            return FactoryConfigClass::createDocumentController(entry, instance);
         }
         void destroyDocumentController (DocumentController* documentController) const noexcept override
         {
-            delete documentController;
+            if (std::is_abstract<FactoryConfigClass>::value)
+                delete documentController;
+            FactoryConfigClass::destroyDocumentController(documentController);
         }
     };
     template<typename FactoryConfigClass>
