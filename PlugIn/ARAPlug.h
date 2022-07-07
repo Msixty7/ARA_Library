@@ -1872,13 +1872,18 @@ private:
         DocumentController* createDocumentController (const PlugInEntry* entry, const ARADocumentControllerHostInstance* instance) const noexcept override
         {
             if(std::is_abstract<FactoryConfigClass>::value)
+            {
                 return new DocumentControllerClass (entry, instance);
+            }
             return FactoryConfigClass::createDocumentController(entry, instance);
         }
         void destroyDocumentController (DocumentController* documentController) const noexcept override
         {
             if (std::is_abstract<FactoryConfigClass>::value)
-                delete documentController;
+            {   
+                 delete documentController;
+                 return;
+            }
             FactoryConfigClass::destroyDocumentController(documentController);
         }
     };
